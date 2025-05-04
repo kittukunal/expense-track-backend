@@ -6,11 +6,11 @@ const generateCookie = (res, userId) => {
   });
 
   res.cookie("session", token, {
-    httpOnly: true,
-    secure: false,
-    sameSite: "None",  // or "Strict" for tighter security
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-  });
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production", // ✅ set true on Render
+  sameSite: "None", // ✅ required for cross-origin cookie
+  maxAge: 30 * 24 * 60 * 60 * 1000,
+});
   
 
   return token;
