@@ -69,8 +69,8 @@ app.use(
 
 // Routes
 app.use("/api/v1/users", userRoutes);
-app.use("/api/v1/incomes", incomeRoutes);
-app.use("/api/v1/expenses", expenseRoutes);
+app.use("/api/v1/incomes",authenticateUser, incomeRoutes);
+app.use("/api/v1/expenses",authenticateUser, expenseRoutes);
 
 // Start Server
 const startServer = async () => {
