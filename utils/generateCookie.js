@@ -8,7 +8,7 @@ const generateCookie = (res, userId) => {
   res.cookie("session", token, {
     httpOnly: true,
     secure: false,
-    sameSite: "Lax",  // or "Strict" for tighter security
+    sameSite: "None",  // or "Strict" for tighter security
     maxAge: 30 * 24 * 60 * 60 * 1000,
   });
   
