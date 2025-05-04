@@ -30,7 +30,9 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "http://localhost:8080",
-  "https://expense-track-frontend-nine.vercel.app", // ✅ your Vercel domain
+  "https://expense-track-frontend-nine.vercel.app",
+  "https://expense-tracker.kunalyadav.site"
+  // ✅ your Vercel domain
 ];
 
 app.use(
