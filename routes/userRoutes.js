@@ -45,6 +45,8 @@ router.route("/login").post(
   loginUser
 );
 
+router.post("/login", loginUser)
+
 // Route for user logout
 router.delete("/logout", logoutCurrentUser);
 
