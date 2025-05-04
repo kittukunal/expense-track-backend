@@ -33,14 +33,33 @@ const allowedOrigins = [
   "https://expense-track-frontend-nine.vercel.app",  // production frontend domain
 ];
 
+// app.use(
+//   cors({
+//     origin: allowedOrigins,
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//   })
+// );
+
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: function (origin, callback) {
+      const allowedOrigins = [
+        "http://localhost:8080",
+        "https://expense-track-frontend-gy1p.vercel.app",
+      ];
+
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 
 // Routes
 app.use("/api/v1/users", userRoutes);
