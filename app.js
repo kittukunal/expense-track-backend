@@ -30,7 +30,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "http://localhost:8080",         // local dev
-  "https://expense-track-frontend-nine.vercel.app/",  // production frontend domain
+  "https://expense-track-frontend-gy1p.vercel.app",  // production frontend domain
 ];
 
 // app.use(
