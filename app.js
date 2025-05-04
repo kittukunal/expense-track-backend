@@ -29,14 +29,20 @@ app.use(cookieParser());
 // CORS configurations
 
 const allowedOrigins = [
-  "http://localhost:8080",         // local dev
-  "https://expense-track-frontend-gy1p.vercel.app",  // production frontend domain
+  "http://localhost:8080",
+  "https://expense-track-frontend-nine.vercel.app", // ✅ your Vercel domain
 ];
 
 app.use(
   cors({
-    origin: allowedOrigins,
-    credentials: true,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // ✅ VERY IMPORTANT for cookies
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
